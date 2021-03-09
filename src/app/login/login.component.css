@@ -1,0 +1,32 @@
+.topnav {
+    overflow: hidden;
+    background-color: #8A0917;
+  }
+  
+  /* Style the topnav links */
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change color on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  .btn-primary{
+    background-color: #8A0917;
+  }
+  .col-md-16 {
+    width: 50%;
+    margin: 60px auto;
+   
+    padding: 60px 120px 80px 120px;
+    text-align: center;
+   
+  }
+ 

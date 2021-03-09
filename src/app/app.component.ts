@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Intranet';
+  isLoggedIn = false;
+  username: string;
+
+  
 }
+
