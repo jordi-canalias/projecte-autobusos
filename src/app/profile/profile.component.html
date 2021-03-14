@@ -1,9 +1,38 @@
 
-<div class="topnav">
+<!-- <div class="topnav">
     <a routerLink="/landing">Home</a>
-
-</div>
-
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Herramientas
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">HTML</a></li>
+        <li><a href="#">CSS</a></li>
+        <li><a href="#">JavaScript</a></li>
+      </ul>
+    </div>
+</div> -->
+<nav class="navbar ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+     <img id="logo"[src]="'assets/img/autobusLOGO.png'"/>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Herramientas
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Actualizar perfil</a></li>
+          <li><a routerLink="/ruta">Rutas</a></li>
+          <li><a routerLink="/line">Lineas</a></li>
+          <li><a routerLink="/forum">Foro</a></li>
+        </ul>
+      </li>
+      <!-- <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li> -->
+    </ul>
+  </div>
+</nav>
 
 <div class="container" *ngIf="currentUser; else loggedOut">
     <header class="jumbotron">
@@ -24,5 +53,8 @@
   </div>
   
   <ng-template #loggedOut>
-    Please login.
+    Por favor,logueanse.
   </ng-template>
+  <div class="footer">
+    <p>Intranet © 2021</p>
+  </div>
