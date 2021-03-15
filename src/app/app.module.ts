@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { authInterceptorProviders } from './_helpers/autenticacion.interceptor';
 import { ProfileComponent } from './profile/profile.component';
+import { ForumComponent } from './forum/forum.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
+    ForumComponent,
     
   ],
   imports: [

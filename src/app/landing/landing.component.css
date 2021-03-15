@@ -15,9 +15,10 @@
   }
   /* Header/Blog Title */
   .header {
-    padding: 30px;
+    padding: 15px;
     text-align: center;
     background: white;
+    
   }
   
   .header h1 {
@@ -27,8 +28,8 @@
   #logo {
     float:left;
     margin:0;
-    width: 230px;
-    height: 150px;
+    width: 150px;
+    height: 80px;
    
     
   }
@@ -98,6 +99,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
+    /* margin-left: 1%; */
     text-align: center;
     background: #8A0917;
     margin-top: 20px;
