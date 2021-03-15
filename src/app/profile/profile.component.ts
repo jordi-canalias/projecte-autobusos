@@ -7,7 +7,7 @@ import { TokenStorageService } from '../_services/token-storage.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
+  isLoggedIn = false;
   currentUser: any;
 
   constructor(private token: TokenStorageService) { }
@@ -15,6 +15,9 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
   }
-
+  logout(): void {
+    this.token.signOut();
+    window.location.reload();
+  }
 }
 

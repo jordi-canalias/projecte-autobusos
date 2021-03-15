@@ -3,7 +3,12 @@
     background-color: #8A0917;
     border-radius: 10px;
   }
-  
+  #logo {
+    float:left;
+    margin:0;
+    width: 150px;
+    height: 80px;      
+  }
   /* Style the topnav links */
   .topnav a {
     float: left;

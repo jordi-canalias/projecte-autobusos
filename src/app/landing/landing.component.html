@@ -1,7 +1,9 @@
 
 
-  
-  <div class="topnav">
+  <!-- <div class="header">
+    <img [src]="'assets/img/autobusLOGO.png'" width="150px" height="80px"/>
+  </div> -->
+<div class="topnav">
     <img id="logo"[src]="'assets/img/autobusLOGO.png'"/>
     <a routerLink="/landing">Home</a>
     <a  *ngIf="!isLoggedIn" routerLink="/login" style="float:right">Login</a>
