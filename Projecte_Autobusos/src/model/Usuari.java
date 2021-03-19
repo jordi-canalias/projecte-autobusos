@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,6 +23,8 @@ public class Usuari {
 	private String correu_electronic;
 	@JsonProperty("premisos")
 	private String permisos;
+	@JsonProperty("contrasenya")
+	private String contrasenya;
 
 	
 
@@ -37,15 +38,18 @@ public class Usuari {
 			@JsonProperty("fecha_entrada") final String fecha_entrada,
 			@JsonProperty("telefon") final int telefon,
 			@JsonProperty("correu_electronic") final String correu_electronic,
-			@JsonProperty("permisos") final String permisos
+			@JsonProperty("permisos") final String permisos,
+			@JsonProperty("contrasenya") final String contrasenya
 			) {
 		this.id_usuari = id_usuari;
 		this.nom = nom;
+		this.funcio = funcio;
 		this.cognoms = cognoms;
 		this.fecha_entrada = fecha_entrada;
 		this.telefon = telefon;
 		this.correu_electronic = correu_electronic;
 		this.permisos = permisos;
+		this.contrasenya = contrasenya;
 	}
 
 
@@ -95,6 +99,12 @@ public class Usuari {
 	@JsonProperty("correu_electronic")
 	public String getCorreu_electronic() {
 		return correu_electronic;
+	}
+
+
+	@JsonProperty("contrasenya")
+	public String getContrasenya() {
+		return contrasenya;
 	}
 
 

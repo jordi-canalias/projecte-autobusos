@@ -10,16 +10,19 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import model.Inquilino;
+import model.Usuari;
 import service.ServiceManager;
 
-@Path("/rutas")
+@Path("/usuaris")
 @Produces("application/json;charset=UTF-8")
 @Consumes("application/json;charset=UTF-8")
-public class RutaApi {
+
+public class UsuariApi {
 	
 	private ServiceManager service;
 	
-	public RutaApi() {
+	public UsuariApi() {
 		service=new ServiceManager();
 	}
 	
@@ -27,28 +30,42 @@ public class RutaApi {
 	//test-----------
 	
 	/*
-	 * GET rutaById ==> {"/id"}
-		GET rutasByUsuari (chofer, guia o oficinista)  ==> {"/usuari"}
-		GET rutasByDia  ==> {"/date"}
-		GET rutasByBus ==> {"/bus"}
-		GET rutasByClient ==> {"/client"}
-		GET rutasByLLoc  ==> {"/lloc"}
-		PUT insertaRuta ==> {"/"}
-		POST actualitzaRuta ==> {"/"}
-		DELETE borraRuta ==> {"/"}
+	 * GET totsUsuaris ==> {"/"}
+	GET usuariById ==> {"/id"}
+	GET usuarisByFuncio ==> {"/funcio"}
+	GET getUsuariosOrdenEntrada ==> {"/"}
+	PUT checkUsuari ==> {"/login"}
+	PUT setUsuario ==> {"/"}
+	POST updateUsuario ==> {"/id"}
+	DELETE borraUsuario ==> {"/id"}
 	 */
 	
 	
 	@GET
 	@Path("/")
-	public Response getRutas() {
-		return Response.ok(service.getRutasServ(), MediaType.APPLICATION_JSON).build();
+	public Response getUsuaris() {
+		return Response.ok(service.getUsuarisServ(), MediaType.APPLICATION_JSON).build();
 	}
+	
+	
+	@PUT
+	@Path("/login")
+	public Response putInquilino(Usuari us) {
+		
+		Boolean res = service.checkUsuariServ(us);
+		System.out.print(res);
+		
+		return Response.ok(res ,MediaType.APPLICATION_JSON).build();
+	}
+	
+	
+	
+	
 	
 	@GET
 	@Path("{id}")
-	public Response getRutaById(@PathParam("id") int id) {
-		return Response.ok(service.getRutaByIdServ(id), MediaType.APPLICATION_JSON).build();
+	public Response getUsuariById(@PathParam("id") int id) {
+		return Response.ok(service.getUsuariByIdServ(id), MediaType.APPLICATION_JSON).build();
 	}
 	
 	@GET
@@ -83,17 +100,4 @@ public class RutaApi {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
