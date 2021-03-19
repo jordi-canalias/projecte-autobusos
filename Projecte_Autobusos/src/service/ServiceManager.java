@@ -3,7 +3,9 @@ package service;
 import java.util.ArrayList;
 
 import dao.DatabaseDao;
+import model.Inquilino;
 import model.Ruta;
+import model.Usuari;
 
 
 public class ServiceManager {
@@ -13,12 +15,27 @@ public class ServiceManager {
 		this.dao = new DatabaseDao();
 	}
 
-	// ---------------BARRIO----------------------
+	// ---------------RUTAS----------------------
 	
 	
 	public ArrayList<Ruta> getRutasServ() {
 		return dao.getRutas();
 	}
+	
+	
+	
+	// ---------------USUARIS----------------------
+	
+	
+	public ArrayList<Usuari> getUsuarisServ() {
+		return dao.getUsuaris();
+	}
+	
+	public Boolean checkUsuariServ(Usuari us) {
+		return dao.checkUsuari(us);
+	}
+	
+	
 	
 	
 	
