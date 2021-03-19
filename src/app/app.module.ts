@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { authInterceptorProviders } from './_helpers/autenticacion.interceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { ForumComponent } from './forum/forum.component';
+import { RutaComponent } from './ruta/ruta.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ForumComponent } from './forum/forum.component';
     RegisterComponent,
     ProfileComponent,
     ForumComponent,
+    RutaComponent,
     
   ],
   imports: [

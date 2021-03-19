@@ -6,8 +6,9 @@
 <div class="topnav">
     <img id="logo"[src]="'assets/img/autobusLOGO.png'"/>
     <a routerLink="/landing">Home</a>
-    <a  *ngIf="!isLoggedIn" routerLink="/login" style="float:right">Login</a>
     <a  *ngIf="!isLoggedIn" routerLink="/register" style="float:right">Registro</a>
+    <a  *ngIf="!isLoggedIn" routerLink="/login" style="float:right">Iniciar sesión</a>
+   
     <a *ngIf="isLoggedIn"  routerLink="/profile">{{username}}</a>
     <a *ngIf="isLoggedIn" href style="float:right" (click)="logout()">Cerrar sesión</a>
   </div>
