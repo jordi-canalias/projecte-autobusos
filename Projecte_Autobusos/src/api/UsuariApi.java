@@ -10,7 +10,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import model.Inquilino;
 import model.Usuari;
 import service.ServiceManager;
 
@@ -61,7 +60,7 @@ public class UsuariApi {
 	
 	
 	
-	
+	/*
 	@GET
 	@Path("{id}")
 	public Response getUsuariById(@PathParam("id") int id) {
@@ -98,6 +97,6 @@ public class UsuariApi {
 	public Response getRutaByLloc(@PathParam("client") String client) {
 		return Response.ok(service.getRutaByClienteServ(client), MediaType.APPLICATION_JSON).build();
 	}
-	
+	*/
 	
 }

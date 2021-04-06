@@ -13,6 +13,8 @@ public class Ruta {
 	private String nom;
 	@JsonProperty("caracter")
 	private String caracter;
+	@JsonProperty("client")
+	private String client;
 	@JsonProperty("recollida")
 	private String recollida;
 	@JsonProperty("destinacio")
@@ -21,27 +23,26 @@ public class Ruta {
 	private String informacion;
 	@JsonProperty("guia_asignat")
 	private String guia_asignat;
-	@JsonProperty("paradas")
-	private String paradas;   //en teoria aixo es una array 
+
 
 	
 	public Ruta(@JsonProperty("id_ruta")  int id_ruta,
 			@JsonProperty("nom")  String nom,
 			@JsonProperty("caracter")  String caracter,
+			@JsonProperty("client")  String client,
 			@JsonProperty("recollida")  String recollida,
 			@JsonProperty("destinacio")  String destinacio,
 			@JsonProperty("informacion")  String informacion,
-			@JsonProperty("guia_asignat")  String guia_asignat,
-			@JsonProperty("paradas")  String paradas
+			@JsonProperty("guia_asignat")  String guia_asignat
 			) {
 		this.id_ruta = id_ruta;
 		this.nom = nom;
 		this.caracter = caracter;
+		this.client = client;
 		this.recollida = recollida;
 		this.destinacio = destinacio;
 		this.informacion = informacion;
 		this.guia_asignat = guia_asignat;
-		this.paradas = paradas;
 	}
 
 
@@ -60,6 +61,11 @@ public class Ruta {
 	@JsonProperty("caracter")
 	public String getCaracter() {
 		return caracter;
+	}
+	
+	@JsonProperty("client")
+	public String getClient() {
+		return client;
 	}
 
 
@@ -80,12 +86,12 @@ public class Ruta {
 		return guia_asignat;
 	}
 
-
+/*
 	@JsonProperty("paradas")
 	public String getParadas() {
 		return paradas;
 	}
-
+*/
 
 	@JsonProperty("recollida")
 	public String getRecollida() {
