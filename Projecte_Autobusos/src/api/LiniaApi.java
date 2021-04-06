@@ -11,17 +11,17 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 
-import model.Ruta;
+import model.*;
 import service.ServiceManager;
 
-@Path("/rutas")
+@Path("/linias")
 @Produces("application/json;charset=UTF-8")
 @Consumes("application/json;charset=UTF-8")
-public class RutaApi {
+public class LiniaApi {
 	
 	private ServiceManager service;
 	
-	public RutaApi() {
+	public LiniaApi() {
 		service=new ServiceManager();
 	}
 	
@@ -29,23 +29,57 @@ public class RutaApi {
 	//test-----------
 	
 	/*
-	 * GET rutaById ==> {"/id"}
-		GET rutasByUsuari (chofer, guia o oficinista)  ==> {"/usuari"}
-		GET rutasByDia  ==> {"/date"}
-		GET rutasByBus ==> {"/bus"}
-		GET rutasByClient ==> {"/client"}
-		GET rutasByLLoc  ==> {"/lloc"}
-		PUT insertaRuta ==> {"/"}
-		POST actualitzaRuta ==> {"/"}
-		DELETE borraRuta ==> {"/"}
+			GET totesLinias ==> {"/"}
+			GET liniaById ==> {"/id"}
+			GET liniaByNom ==> {"/nom"}
+			GET liniaByBus ==> {"/bus"}
+			GET liniaByParada ==> {"/parada"}  
+			PUT insertaLinia ==> {"/"}
+			POST actualitzaLinia ==> {"/"}
+			DELETE deleteLinia ==> {"/"}
+
+
+	
 	 */
 	
 	
 	@GET
 	@Path("/")
-	public Response getRutas() {
-		return Response.ok(service.getRutasServ(), MediaType.APPLICATION_JSON).build();
+	public Response getLinias() {
+		return Response.ok(service.getLiniasServ(), MediaType.APPLICATION_JSON).build();        //NO FUNCIONA, PERO TAMPOC DONA ERROR 
 	}
+	
+	
+	@GET
+	@Path("{id}")
+	public Response getLiniaById(@PathParam("id") int id) {
+		return Response.ok(service.getLiniaByIdServ(id), MediaType.APPLICATION_JSON).build();
+	}
+	
+	
+	@GET
+	@Path("nom/{nom}")
+	public Response getLiniaByNom(@PathParam("nom") String nom) {
+		return Response.ok(service.getLiniaByNomServ(nom), MediaType.APPLICATION_JSON).build();
+	}
+	
+	@GET
+	@Path("bus/{bus}")
+	public Response getLiniaByBus(@PathParam("bus") String bus) {
+		return Response.ok(service.getLiniaByBusServ(bus), MediaType.APPLICATION_JSON).build();
+	}
+	
+	@PUT
+	@Path("/")
+	public Response putNewLinia(Linia linia) {
+		
+		return Response.ok(service.setLiniaServ(linia), MediaType.APPLICATION_JSON).build();
+	}
+
+	
+	
+	
+	/*
 	
 	@GET
 	@Path("{id}")
@@ -92,7 +126,7 @@ public class RutaApi {
 	}
 	
 	
-	/*
+	
 	@GET
 	@Path("{bus}")
 	public Response getRutaByBus(@PathParam("bus") String bus) {
