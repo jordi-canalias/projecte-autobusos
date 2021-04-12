@@ -1,11 +1,11 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import dao.DatabaseDao;
-import model.Linia;
-import model.Ruta;
-import model.Usuari;
+import model.*;
+
 
 
 public class ServiceManager {
@@ -14,7 +14,7 @@ public class ServiceManager {
 	public ServiceManager() {
 		this.dao = new DatabaseDao();
 	}
-
+	
 	// ---------------RUTAS----------------------
 	
 	
@@ -100,8 +100,30 @@ public class ServiceManager {
 		return dao.checkUsuari(us);
 	}
 	
+	public Boolean checkToken(Token to) {
+		return dao.checkToken(to);
+	}
+	
+	public void actualitzaToken(String to, Usuari us) {
+		 dao.actualitzaToken(to, us);
+	}
 	
 	
+	
+	public String tokenGen() {
+		int leftLimit = 48; // numeral '0'
+	    int rightLimit = 122; // letter 'z'
+	    int targetStringLength = 30;
+	    Random random = new Random();
+
+	    String generatedString = random.ints(leftLimit, rightLimit + 1)
+	      .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+	      .limit(targetStringLength)
+	      .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+	      .toString();
+
+	    return generatedString;
+	}
 	
 	
 }

@@ -1,6 +1,8 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Random;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -16,18 +18,24 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import config.ConstantsApi;
-import model.Linia;
-import model.Parada;
-import model.Ruta;
-import model.Usuari;
+import model.*;
+
 
 public class DatabaseDao {
+	
+	
 
 	/*
 	 * 
 	 * Actualitzat 
 	 * 
 	 */
+	
+	
+	
+	
+	
+
 	
 //**********************************************************************************************
 //***************************************       RUTAS       ************************************
@@ -99,8 +107,6 @@ public class DatabaseDao {
 				destinacio = rs.getString("destinacio");
 				informacion = rs.getString("informacion");
 				guia_asignat = rs.getString("guia_asignat");
-
-				
 
 			}
 
@@ -523,7 +529,7 @@ public class DatabaseDao {
 						rs.getString("funcio"),rs.getString("fecha_entrada"),rs.getInt("telefon"),rs.getString("correuElectronic"),rs.getString("permisos"),rs.getString("contrasenya"));
 				
 
-				users.add(us);
+				users.add(user);
 
 			}
 			con.close();
@@ -539,6 +545,110 @@ public class DatabaseDao {
 	}
 	
 	
+	
+	
+	
+	public void actualitzaToken(String to, Usuari us) {
+
+		int id_usuari = us.getId_usuari();
+		
+		//UPDATE autobusos.tokens SET token='"+to+"', hora_inici='"+data+"' WHERE id_usuari='"+id_usuari+"';
+		
+		/*
+		java.util.Date date = null;
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+		int hours = calendar.get(Calendar.HOUR_OF_DAY);
+		String data = String.valueOf(hours);
+		*/
+		
+		String data = "now";
+		
+		String query = "UPDATE autobusos.tokens SET token='"+to+"', hora_inici='"+data+"' WHERE id_usuari='"+id_usuari+"'";
+		
+		try {
+			Connection con = DriverManager.getConnection(ConstantsApi.CONNECTION, ConstantsApi.USER_CONNECTION,
+					ConstantsApi.PASS_CONNECTION);
+
+			
+			System.out.print(to);
+			System.out.print(data);
+			System.out.print(id_usuari);
+			
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.execute();
+
+			con.close();
+		}
+
+		catch (SQLException e) {
+			System.out.println("Error en la ejecucion: " + e.getErrorCode() + "----------" + e.getMessage() + "-------" +  query);
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public Boolean checkToken(Token to) {
+		
+		int id = to.getId_usuari();
+		String token = to.getToken();
+		
+		ArrayList<Token> tokens = new ArrayList<Token>();
+		
+		
+		//SELECT * FROM autobusos.usuaris WHERE id_usuari='-1' and contrasenya='1234'
+		
+		
+		try {
+			Connection con = DriverManager.getConnection(ConstantsApi.CONNECTION, ConstantsApi.USER_CONNECTION,
+					ConstantsApi.PASS_CONNECTION);
+
+			PreparedStatement stmt = con.prepareStatement("SELECT * FROM autobusos.tokens WHERE id_usuari='"+id+"' and token='"+token+"'");
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				
+				Token tok = new Token(rs.getInt("id_usuari"),rs.getString("usuari"),rs.getString("token"),
+						rs.getString("hora_inici"));
+				
+
+				tokens.add(tok);
+
+			}
+			con.close();
+		}
+
+		catch (SQLException e) {
+			System.out.println("Error en la ejecucion: " + e.getErrorCode());
+		}
+		
+		
+		if(tokens.size() == 1) {
+			return true;  //token correcte
+		}
+		return false; //token incorrecte
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * 
+	 * FUNCIONES COMPLEMENTARIAS
+	 * 
+	 * 
+	 * */
 	
 	
 }

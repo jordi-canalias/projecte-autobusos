@@ -1,5 +1,7 @@
 package api;
 
+import java.util.ArrayList;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -10,7 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import model.Usuari;
+import model.*;
 import service.ServiceManager;
 
 @Path("/usuaris")
@@ -47,15 +49,49 @@ public class UsuariApi {
 	}
 	
 	
+	
+	
 	@PUT
 	@Path("/login")
-	public Response putInquilino(Usuari us) {
+	public Response logUser(Usuari us) {										//logeja i actualitza el token del usuari 
 		
 		Boolean res = service.checkUsuariServ(us);
-		System.out.print(res);
+		String token ="error";
 		
-		return Response.ok(res ,MediaType.APPLICATION_JSON).build();
+		if(res == true) {
+			token = service.tokenGen();
+			service.actualitzaToken(token,us);
+		}
+		ArrayList<String> arr = new ArrayList<String>();
+		arr.add(token);
+		
+		//return Response.ok(arr ,MediaType.APPLICATION_JSON).build();
+		return Response.ok(arr ,MediaType.APPLICATION_JSON).build();
 	}
+	
+	
+	@PUT
+	@Path("/check")
+	public Response checkToken(Token to) {                                        //comproba el token del usuari
+		
+		Boolean Check = service.checkToken(to);
+		
+		ArrayList<Boolean> arr = new ArrayList<Boolean>();
+		arr.add(Check);
+		
+		return Response.ok(arr ,MediaType.APPLICATION_JSON).build();
+	}
+	
+	
+	@GET
+	@Path("/funcio/{fun}")
+	public Response getUsuarisByfuncio() {
+		return Response.ok(service.getUsuarisServ(), MediaType.APPLICATION_JSON).build();
+	}
+	
+	
+	
+	
 	
 	
 	
