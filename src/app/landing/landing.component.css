@@ -93,6 +93,21 @@
     clear: both;
   }
   
+  .container{
+    padding: 30px;
+    padding-bottom: 30px;
+    }
+   .carousel .item {
+     height: 500px;
+   }
+   
+   .item img {
+       position: absolute;
+       object-fit:cover;
+       top: 0;
+       left: 0;
+       min-height: 500px;
+   }
   /* Footer */
   .footer {
     padding: 10px;

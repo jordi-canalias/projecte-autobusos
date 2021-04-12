@@ -10,6 +10,7 @@ export class LandingComponent implements OnInit {
   isLoggedIn = false;
   username: string;
 
+  
   constructor(private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {

@@ -13,6 +13,8 @@ import { authInterceptorProviders } from './_helpers/autenticacion.interceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { ForumComponent } from './forum/forum.component';
 import { RutaComponent } from './ruta/ruta.component';
+import { LineaComponent } from './linea/linea.component';
+import { ParadaComponent } from './parada/parada.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { RutaComponent } from './ruta/ruta.component';
     ProfileComponent,
     ForumComponent,
     RutaComponent,
+    LineaComponent,
+    ParadaComponent,
     
   ],
   imports: [
